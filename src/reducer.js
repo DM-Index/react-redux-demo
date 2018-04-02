@@ -40,10 +40,11 @@ let initialState = {
       name: "Sleepy",
       age: 7
     }
-  ]
+  ],
+  name: ""
 };
 //REDUCER
-export default function(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_NAME:
       return Object.assign({}, state, { name: action.name });
@@ -52,6 +53,7 @@ export default function(state = initialState, action) {
       let peopleCopy = state.people.slice();
       let { name, age } = action;
       peopleCopy.push({ name, age });
+
       return Object.assign({}, state, { people: peopleCopy });
 
     case GET_PEOPLE + "_PENDING":
